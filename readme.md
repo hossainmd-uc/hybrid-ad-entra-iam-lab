@@ -93,11 +93,12 @@ This project implements a hardened, production-grade **Hybrid Identity & Access 
 
 ### 1. Zero-Trust OU Structure & PowerShell Bulk Provisioning (`Joiner`)
 ![ADUC OU Hierarchy](assets/01_aduc_ou_hierarchy.png)
-*(Insert `assets/02_powershell_bulk_provisioning.png` here)*
+![PS Bulk Provisioning](assets/02_powershell_bulk_provisioning.png)
 * **What this shows:** Rather than manually creating users in the GUI, executed `Invoke-ADBulkOnboarding.ps1` against `new_hires.csv`. The script dynamically validated target OUs, constructed routable UPNs, populated job metadata, and bound users to departmental Security Groups (`SG_Engineering`, `SG_Finance`, `SG_HR`).
 
 ### 2. Scoped Hybrid Sync via Microsoft Entra Connect
-*(Insert `assets/03_entra_connect_ou_filtering.png` and `assets/04_entra_portal_synced_users.png` here)*
+![Entra OU Filtering](assets/03_entra_connect_ou_filtering.png)
+*(Insert `assets/04_entra_portal_synced_users.png` here)*
 * **What this shows:** Configured Custom Installation in Microsoft Entra Connect with Password Hash Synchronization. Restricted synchronization strictly to the `OU=Corp_Users` subtree, ensuring `OU=Tier0_Admins` and `OU=Quarantine_Disabled` remain strictly on-premises.
 
 ### 3. Administrative Modifications: Lateral Transfer (`Mover`) & Termination (`Leaver`)
