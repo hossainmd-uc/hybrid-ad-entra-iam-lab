@@ -92,6 +92,7 @@ This project implements a hardened, production-grade **Hybrid Identity & Access 
 ## 📸 Implementation Walkthrough & Proof of Work
 
 ### 1. Zero-Trust OU Structure & PowerShell Bulk Provisioning (`Joiner`)
+![ADUC OU Hierarchy](assets/01_aduc_ou_hierarchy.png)
 *(Insert `assets/02_powershell_bulk_provisioning.png` here)*
 * **What this shows:** Rather than manually creating users in the GUI, executed `Invoke-ADBulkOnboarding.ps1` against `new_hires.csv`. The script dynamically validated target OUs, constructed routable UPNs, populated job metadata, and bound users to departmental Security Groups (`SG_Engineering`, `SG_Finance`, `SG_HR`).
 
