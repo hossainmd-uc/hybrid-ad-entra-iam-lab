@@ -98,16 +98,16 @@ This project implements a hardened, production-grade **Hybrid Identity & Access 
 
 ### 2. Scoped Hybrid Sync via Microsoft Entra Connect
 ![Entra OU Filtering](assets/03_entra_connect_ou_filtering.png)
-*(Insert `assets/04_entra_portal_synced_users.png` here)*
+![Entra Synced Users](assets/04_entra_portal_synced_users.png)
 * **What this shows:** Configured Custom Installation in Microsoft Entra Connect with Password Hash Synchronization. Restricted synchronization strictly to the `OU=Corp_Users` subtree, ensuring `OU=Tier0_Admins` and `OU=Quarantine_Disabled` remain strictly on-premises.
 
 ### 3. Administrative Modifications: Lateral Transfer (`Mover`) & Termination (`Leaver`)
-*(Insert `assets/05_jml_mover_leaver_audit.png` here)*
+![JML Mover and Leaver Audit](assets/05_jml_mover_leaver_audit.png)
 * **Mover Scenario:** Processed a departmental transfer for *Marcus Vance* (Finance -> Engineering). Removed `SG_Finance` membership to prevent privilege creep, assigned `SG_Engineering`, updated `Department`/`Title` attributes, relocated the object to `OU=Engineering`, and pushed a delta sync.
 * **Leaver Scenario:** Processed an immediate termination for *Elena Rostova*. Disabled the account, stripped all group memberships, moved the user to `OU=Quarantine_Disabled` (outside the Entra Connect sync scope), and triggered `Start-ADSyncSyncCycle -PolicyType Delta` to immediately purge active cloud access.
 
 ### 4. GPO Hardening & Event ID 4740 Lockout Forensics
-*(Insert `assets/06_event_4740_lockout_forensics.png` here)*
+![Event ID 4740 Lockout Forensics](assets/06_event_4740_lockout_forensics.png)
 * **What this shows:** Deployed a Domain Group Policy enforcing a 3-attempt account lockout threshold. Simulated a brute-force/misconfigured credential lockout, traced the originating workstation IP/computer name via **Security Event ID 4740** on the Domain Controller, and remediated the ticket via `Unlock-ADAccount`.
 
 ---
