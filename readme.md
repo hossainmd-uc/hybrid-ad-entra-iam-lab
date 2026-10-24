@@ -113,7 +113,7 @@ This project implements a hardened, production-grade **Hybrid Identity & Access 
 ## 🚀 How to Reproduce This Lab
 1. Clone this repository onto your Windows Server Domain Controller:
    ```powershell
-   git clone https://github.com/<your-username>/hybrid-ad-entra-iam-lab.git
+   git clone https://github.com/hossainmd-uc/hybrid-ad-entra-iam-lab.git
    cd hybrid-ad-entra-iam-lab
    ```
 2. Follow the complete step-by-step engineering runbook in **[SETUP_GUIDE.md](./SETUP_GUIDE.md)**.
